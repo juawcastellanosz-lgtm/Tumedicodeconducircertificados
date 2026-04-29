@@ -166,8 +166,6 @@ tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
 </head>
 <body>
 <div class="site">
-
-<!-- ═══ NAV LOGO SVG (reutilizable) ═══ -->
 <template id="logo-tpl">
 <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <circle cx="50" cy="50" r="47" fill="none" stroke="#2E8B57" stroke-width="5"/>
@@ -183,8 +181,6 @@ tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
   <circle cx="66" cy="82" r="4.5" fill="#1B3D6E"/>
 </svg>
 </template>
-
-<!-- ═══════ PÁGINA INICIO ═══════ -->
 <div class="page active" id="page-home">
   <nav class="nav">
     <div class="nav-left" id="logo-home"></div>
@@ -197,7 +193,6 @@ tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
     </div>
   </nav>
   <div class="vig"><span>🗓️ Certificado con</span><span class="vig-pill">vigencia de 1 año</span><span>· válido para tránsito en Honduras</span></div>
-
   <section class="hero">
     <div class="hero-content">
       <div class="badge-live">Atención rápida y profesional</div>
@@ -212,14 +207,12 @@ tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
     </div>
     <svg class="hero-wm" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="100" y1="40" x2="100" y2="240" stroke="white" stroke-width="6"/><path d="M100 80 C60 65 55 110 100 120 C145 130 140 175 100 160" stroke="white" stroke-width="4" fill="none"/><path d="M100 80 C140 65 145 110 100 120 C55 130 60 175 100 160" stroke="white" stroke-width="4" fill="none"/><path d="M100 46 C75 34 35 38 20 55 C50 38 85 44 100 60" fill="white"/><path d="M100 46 C125 34 165 38 180 55 C150 38 115 44 100 60" fill="white"/></svg>
   </section>
-
   <div class="features">
     <div class="feat"><div class="feat-icon">⚡</div><h4>Resultado el mismo día</h4><p>No esperes días. Tu certificado listo en minutos.</p></div>
     <div class="feat"><div class="feat-icon">✅</div><h4>Avalado por tránsito</h4><p>Certificados reconocidos oficialmente para tus trámites.</p></div>
     <div class="feat"><div class="feat-icon">📅</div><h4>Sin filas</h4><p>Agenda en línea o por WhatsApp y llega directo.</p></div>
     <div class="feat"><div class="feat-icon">🩺</div><h4>Médico certificado</h4><p>Evaluación profesional en instalaciones modernas.</p></div>
   </div>
-
   <section class="services">
     <div class="sec-hdr"><div class="sec-tag">Nuestros servicios</div><div class="sec-title">Todo lo que necesitas para tu trámite de tránsito</div></div>
     <div class="srv-grid">
@@ -228,7 +221,6 @@ tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
       <div class="srv-card"><div class="srv-ico ico-t">🩺</div><h3>Evaluación médica express</h3><p>Consulta completa en 20 minutos. Resultados el mismo día.</p><span class="srv-tag">Mismo día</span><span class="vig-chip">✅ Avalado tránsito</span></div>
     </div>
   </section>
-
   <section class="proceso">
     <div class="sec-hdr"><div class="sec-tag">El proceso</div><div class="sec-title">3 pasos simples para tu certificado</div></div>
     <div class="steps">
@@ -237,7 +229,6 @@ tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
       <div class="step"><div class="step-num">3</div><h4>Recibe tu certificado</h4><p>El mismo día. Válido 1 año para tránsito.</p></div>
     </div>
   </section>
-
   <section class="galeria">
     <div class="sec-hdr"><div class="sec-tag">Nuestras instalaciones</div><div class="sec-title">Conoce TuMedico DeConducir</div></div>
     <div class="gal-grid">
@@ -250,27 +241,23 @@ tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
     </div>
     <p class="gal-note">📸 Las fotografías estarán disponibles próximamente</p>
   </section>
-
   <section class="faq" id="faq-section">
     <div class="sec-hdr"><div class="sec-tag">Preguntas frecuentes</div><div class="sec-title">Todo lo que necesitas saber</div></div>
     <div class="faq-list">
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo dura la evaluación médica? <span class="arr">▼</span></button><div class="faq-a">La evaluación médica tiene una duración aproximada de 20 minutos. Nuestro proceso está diseñado para ser eficiente y respetar tu tiempo sin sacrificar la calidad de la atención.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo tiene de vigencia el certificado? <span class="arr">▼</span></button><div class="faq-a">El certificado médico tiene una vigencia de 1 año a partir de la fecha de emisión, válido para todos los trámites oficiales de tránsito en Honduras.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Qué documentos debo llevar? <span class="arr">▼</span></button><div class="faq-a">Solo necesitas presentar tu cédula de identidad vigente. Si estás renovando tu licencia, también puedes traer tu licencia anterior aunque no es obligatorio.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Necesito ir en ayunas? <span class="arr">▼</span></button><div class="faq-a">No es necesario ir en ayunas para la evaluación estándar. Si tienes condiciones como diabetes o hipertensión, te recomendamos mencionarlo al agendar.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿El certificado sirve para primera vez y renovación? <span class="arr">▼</span></button><div class="faq-a">Sí, emitimos certificados tanto para primera vez como para renovación. El proceso es el mismo y el resultado es válido para cualquiera de los trámites.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cómo puedo agendar mi cita? <span class="arr">▼</span></button><div class="faq-a">Puedes agendar completando el formulario en línea o escribiéndonos directamente por WhatsApp. Te contactaremos en breve para confirmar fecha y hora.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuál es la dirección de la clínica? <span class="arr">▼</span></button><div class="faq-a">Estamos ubicados en 22 Calle A, San Pedro Sula, Cortés, Honduras. Puedes hacer clic en la dirección dentro del apartado de contacto para abrir Google Maps.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo dura la evaluación médica? <span class="arr">▼</span></button><div class="faq-a">La evaluación médica tiene una duración aproximada de 20 minutos.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo tiene de vigencia el certificado? <span class="arr">▼</span></button><div class="faq-a">El certificado médico tiene una vigencia de 1 año, válido para todos los trámites oficiales de tránsito en Honduras.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Qué documentos debo llevar? <span class="arr">▼</span></button><div class="faq-a">Solo necesitas tu cédula de identidad vigente.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Necesito ir en ayunas? <span class="arr">▼</span></button><div class="faq-a">No es necesario ir en ayunas para la evaluación estándar.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿El certificado sirve para primera vez y renovación? <span class="arr">▼</span></button><div class="faq-a">Sí, emitimos certificados tanto para primera vez como para renovación.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cómo puedo agendar mi cita? <span class="arr">▼</span></button><div class="faq-a">Completa el formulario en línea o escríbenos por WhatsApp.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuál es la dirección? <span class="arr">▼</span></button><div class="faq-a">22 Calle A, San Pedro Sula, Cortés, Honduras.</div></div>
     </div>
   </section>
-
   <footer class="footer">
     <div class="footer-brand">TuMedico DeConducir<small>22 Calle A, San Pedro Sula, Cortés · Honduras</small></div>
     <div class="footer-links"><a onclick="goTo('page-home')">Inicio</a><a onclick="goTo('page-agenda')">Agendar cita</a><a onclick="scrollFaq()">FAQ</a></div>
   </footer>
 </div>
-
-<!-- ═══════ PÁGINA AGENDAR ═══════ -->
 <div class="page" id="page-agenda">
   <nav class="nav">
     <div class="nav-left" id="logo-agenda"></div>
@@ -284,8 +271,8 @@ tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
         <h2>¿Listo para tramitar tu licencia?</h2>
         <p>Completa el formulario y te contactamos para confirmar. También puedes escribirnos por WhatsApp.</p>
         <div class="ci"><div class="ci-icon">📍</div><div class="ci-text"><strong>Ubicación</strong><span>22 Calle A, San Pedro Sula, Cortés<br><a class="map-link" onclick="openMaps()">📌 Ver en Google Maps →</a></span></div></div>
-        <div class="ci"><div class="ci-icon">🕐</div><div class="ci-text"><strong>Horario de atención</strong><span>Lunes a Sábado · 7:00 AM – 5:00 PM</span></div></div>
-        <div class="ci"><div class="ci-icon">🗓️</div><div class="ci-text"><strong>Vigencia del certificado</strong><span>1 año · Válido para trámites de tránsito</span></div></div>
+        <div class="ci"><div class="ci-icon">🕐</div><div class="ci-text"><strong>Horario</strong><span>Lunes a Sábado · 7:00 AM – 5:00 PM</span></div></div>
+        <div class="ci"><div class="ci-icon">🗓️</div><div class="ci-text"><strong>Vigencia</strong><span>1 año · Válido para trámites de tránsito</span></div></div>
         <div class="ci"><div class="ci-icon">📱</div><div class="ci-text"><strong>WhatsApp</strong><span><a style="color:var(--green);font-weight:700;text-decoration:none;" href="https://wa.me/50498800678" target="_blank">+504 9880-0678</a></span></div></div>
       </div>
       <div class="form-card">
@@ -339,8 +326,6 @@ tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
     <div class="footer-links"><a onclick="goTo('page-home')">Inicio</a><a onclick="openMaps()">Ver en Maps</a></div>
   </footer>
 </div>
-
-<!-- ═══════ MODERADOR ═══════ -->
 <div class="page" id="page-mod">
   <nav class="nav">
     <div class="nav-left" id="logo-mod"></div>
@@ -348,11 +333,11 @@ tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
   </nav>
   <div class="mod-page">
     <div class="mod-hdr">
-      <div><h2>Panel de administración</h2><p>Registro de pacientes y métricas de alcance por red social</p></div>
+      <div><h2>Panel de administración</h2><p>Registro de pacientes y métricas por red social</p></div>
       <span class="mod-badge" id="mod-total-badge">0 solicitudes</span>
     </div>
     <div class="metrics-grid">
-      <div class="metric-card"><div class="metric-label">📋 Total solicitudes</div><div class="metric-num" id="m-total">0</div><div class="metric-sub">Desde el inicio</div></div>
+      <div class="metric-card"><div class="metric-label">📋 Total</div><div class="metric-num" id="m-total">0</div><div class="metric-sub">Desde el inicio</div></div>
       <div class="metric-card"><div class="metric-label">🎵 TikTok</div><div class="metric-num" id="m-tk">0</div><div class="metric-sub" id="m-tk-p">0%</div></div>
       <div class="metric-card"><div class="metric-label">📸 Instagram</div><div class="metric-num" id="m-ig">0</div><div class="metric-sub" id="m-ig-p">0%</div></div>
       <div class="metric-card"><div class="metric-label">👥 Facebook</div><div class="metric-num" id="m-fb">0</div><div class="metric-sub" id="m-fb-p">0%</div></div>
@@ -367,7 +352,7 @@ tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
     <div class="table-card">
       <div class="table-hdr"><h3>Registro de pacientes</h3><input class="tbl-search" type="text" placeholder="Buscar paciente..." oninput="filtrarTabla(this.value)"/></div>
       <div id="table-container">
-        <div class="no-data" id="no-data-msg">Aún no hay solicitudes registradas.<br>Las citas agendadas aparecerán aquí automáticamente.</div>
+        <div class="no-data" id="no-data-msg">Aún no hay solicitudes registradas.</div>
         <table id="tabla-pacientes" style="display:none;">
           <thead><tr><th>#</th><th>Nombre</th><th>Teléfono</th><th>Servicio</th><th>Condiciones</th><th>Fecha cita</th><th>Fuente</th><th>Registrado</th></tr></thead>
           <tbody id="tabla-body"></tbody>
@@ -380,23 +365,17 @@ tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
     <div class="footer-links"><a onclick="goTo('page-home')">Volver al sitio</a></div>
   </footer>
 </div>
-
-</div><!-- /site -->
-
-<div class="wa-float" title="WhatsApp" onclick="window.open('https://wa.me/50498800678','_blank')">
+</div>
+<div class="wa-float" onclick="window.open('https://wa.me/50498800678','_blank')">
   <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </div>
-
 <script>
-// ── Logo injection ──
-var LOGO_SVG = '<svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="47" fill="none" stroke="#2E8B57" stroke-width="5"/><circle cx="50" cy="50" r="39" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="50" y1="18" x2="50" y2="64" stroke="#2E8B57" stroke-width="3.5" stroke-linecap="round"/><path d="M50 28 C37 23 34 38 50 40 C66 42 63 57 50 52" stroke="#2E8B57" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M50 28 C63 23 66 38 50 40 C34 42 37 57 50 52" stroke="#2E8B57" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M50 20 C41 15 27 19 22 27 C33 19 44 22 50 28" fill="#2E8B57"/><path d="M50 20 C59 15 73 19 78 27 C67 19 56 22 50 28" fill="#2E8B57"/><rect x="24" y="63" width="52" height="17" rx="5" fill="white" opacity=".88"/><rect x="29" y="55" width="42" height="13" rx="5" fill="white" opacity=".65"/><circle cx="34" cy="82" r="4.5" fill="#1B3D6E"/><circle cx="66" cy="82" r="4.5" fill="#1B3D6E"/></svg>';
-var BRAND_MAIN = '<div class="nav-brand">TuMedico DeConducir<small>Certificados Médicos · Licencia de Conducir</small></div>';
-var BRAND_MOD = '<div class="nav-brand">Panel Moderador · TuMedico<small>Administración y métricas</small></div>';
-document.getElementById('logo-home').innerHTML = LOGO_SVG + BRAND_MAIN;
-document.getElementById('logo-agenda').innerHTML = LOGO_SVG + BRAND_MAIN;
-document.getElementById('logo-mod').innerHTML = LOGO_SVG + BRAND_MOD;
-
-// ── Nav ──
+var LOGO_SVG='<svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="47" fill="none" stroke="#2E8B57" stroke-width="5"/><circle cx="50" cy="50" r="39" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="50" y1="18" x2="50" y2="64" stroke="#2E8B57" stroke-width="3.5" stroke-linecap="round"/><path d="M50 28 C37 23 34 38 50 40 C66 42 63 57 50 52" stroke="#2E8B57" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M50 28 C63 23 66 38 50 40 C34 42 37 57 50 52" stroke="#2E8B57" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M50 20 C41 15 27 19 22 27 C33 19 44 22 50 28" fill="#2E8B57"/><path d="M50 20 C59 15 73 19 78 27 C67 19 56 22 50 28" fill="#2E8B57"/><rect x="24" y="63" width="52" height="17" rx="5" fill="white" opacity=".88"/><rect x="29" y="55" width="42" height="13" rx="5" fill="white" opacity=".65"/><circle cx="34" cy="82" r="4.5" fill="#1B3D6E"/><circle cx="66" cy="82" r="4.5" fill="#1B3D6E"/></svg>';
+var BRAND_MAIN='<div class="nav-brand">TuMedico DeConducir<small>Certificados Médicos · Licencia de Conducir</small></div>';
+var BRAND_MOD='<div class="nav-brand">Panel Moderador · TuMedico<small>Administración y métricas</small></div>';
+document.getElementById('logo-home').innerHTML=LOGO_SVG+BRAND_MAIN;
+document.getElementById('logo-agenda').innerHTML=LOGO_SVG+BRAND_MAIN;
+document.getElementById('logo-mod').innerHTML=LOGO_SVG+BRAND_MOD;
 var pacientes=[];
 function goTo(id){document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
 function scrollFaq(){goTo('page-home');setTimeout(function(){document.getElementById('faq-section').scrollIntoView({behavior:'smooth'});},100);}
@@ -404,23 +383,53 @@ function toggleFaq(btn){var open=btn.classList.contains('open');document.querySe
 function selectSource(btn,val){document.querySelectorAll('.src-btn').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');document.getElementById('f-source').value=val;}
 function openMaps(){window.open('https://www.google.com/maps/search/?api=1&query=22+Calle+A+San+Pedro+Sula+Cortes+Honduras','_blank');}
 function getComos(){var c=[];document.querySelectorAll('.como-chk input:checked').forEach(function(x){c.push(x.value);});var o=document.getElementById('f-como-otro').value.trim();if(o)c.push(o);return c.length?c:['Ninguna especificada'];}
+var GMAIL_DESTINO='Juaw_castellanosz@unicah.edu';
+var GOOGLE_SHEET_URL='PEGA_AQUI_TU_URL_DE_APPS_SCRIPT';
 function enviarFormulario(){
   var n=document.getElementById('f-nombre').value.trim();
   var t=document.getElementById('f-tel').value.trim();
   var s=document.getElementById('f-servicio').value;
   var src=document.getElementById('f-source').value||'No especificado';
   var f=document.getElementById('f-fecha').value;
+  var msg=(document.getElementById('f-msg')||{}).value||'';
   if(!n||!t||!s){alert('Por favor completa nombre, teléfono y tipo de servicio.');return;}
+  var comos=getComos();
   var ahora=new Date();
   var reg=ahora.toLocaleDateString('es-HN')+' '+ahora.toLocaleTimeString('es-HN',{hour:'2-digit',minute:'2-digit'});
-  pacientes.push({nombre:n,tel:t,servicio:s,comos:getComos(),fechaCita:f||'Por definir',source:src,fechaReg:reg});
-  actualizarMod();
-  document.getElementById('success-msg').style.display='block';
-  ['f-nombre','f-tel','f-fecha','f-msg','f-como-otro'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
-  document.getElementById('f-servicio').value='';document.getElementById('f-source').value='';
-  document.querySelectorAll('.src-btn').forEach(function(b){b.classList.remove('selected');});
-  document.querySelectorAll('.como-chk input').forEach(function(c){c.checked=false;});
-  setTimeout(function(){document.getElementById('success-msg').style.display='none';},4000);
+  var btn=document.querySelector('.btn-submit');
+  btn.textContent='Enviando…';btn.disabled=true;
+  var formData=new FormData();
+  formData.append('_subject','🩺 Nueva cita – '+n);
+  formData.append('_template','table');
+  formData.append('_captcha','false');
+  formData.append('Nombre',n);
+  formData.append('Telefono',t);
+  formData.append('Servicio',s);
+  formData.append('Fecha_preferida',f||'Por definir');
+  formData.append('Condiciones_medicas',comos.join(', '));
+  formData.append('Como_nos_encontro',src);
+  formData.append('Mensaje',msg||'Sin mensaje');
+  formData.append('Registrado_en',reg);
+  var correoOk=false;var sheetOk=false;
+  function intentarFinalizar(){
+    if(!correoOk&&!sheetOk)return;
+    btn.textContent='Solicitar mi cita →';btn.disabled=false;
+    pacientes.push({nombre:n,tel:t,servicio:s,comos:comos,fechaCita:f||'Por definir',source:src,fechaReg:reg});
+    actualizarMod();
+    document.getElementById('success-msg').style.display='block';
+    ['f-nombre','f-tel','f-fecha','f-msg','f-como-otro'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+    document.getElementById('f-servicio').value='';document.getElementById('f-source').value='';
+    document.querySelectorAll('.src-btn').forEach(function(b){b.classList.remove('selected');});
+    document.querySelectorAll('.como-chk input').forEach(function(c){c.checked=false;});
+    setTimeout(function(){document.getElementById('success-msg').style.display='none';},5000);
+  }
+  fetch('https://formsubmit.co/'+GMAIL_DESTINO,{method:'POST',body:formData})
+  .then(function(){correoOk=true;intentarFinalizar();})
+  .catch(function(){correoOk=true;intentarFinalizar();});
+  if(GOOGLE_SHEET_URL!=='PEGA_AQUI_TU_URL_DE_APPS_SCRIPT'){
+    fetch(GOOGLE_SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,telefono:t,servicio:s,fecha:f||'Por definir',condiciones:comos.join(', '),fuente:src,mensaje:msg,registrado:reg})})
+    .then(function(){sheetOk=true;}).catch(function(){sheetOk=true;});
+  }else{sheetOk=true;intentarFinalizar();}
 }
 function actualizarMod(){
   var total=pacientes.length;
