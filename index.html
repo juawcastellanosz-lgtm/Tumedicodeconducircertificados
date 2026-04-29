@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TuMedico DeConducir – Certificados Médicos para Licencia</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#1B3D6E;--navy-dark:#112649;--navy-mid:#234d8a;
+  --green:#2E8B57;--green-light:#3aad6c;--green-pale:#e8f5ee;
+  --white:#fff;--offwhite:#f5f8fc;--gray:#5a6e85;
+  --light:#e4ecf5;--text:#1a2a3a;--border:#d5e0ef;
+}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);}
+.site{border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+.page{display:none;}.page.active{display:block;}
+.logo-svg{width:38px;height:38px;flex-shrink:0;}
+.nav{background:var(--navy);padding:0 36px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-left{display:flex;align-items:center;gap:10px;}
+.nav-brand{font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;color:#fff;line-height:1.15;}
+.nav-brand small{display:block;font-weight:500;font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.6px;text-transform:uppercase;}
+.nav-links{display:flex;align-items:center;gap:6px;}
+.nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:13px;font-weight:500;padding:7px 13px;border-radius:7px;cursor:pointer;transition:background .15s,color .15s;}
+.nav-links a:hover{background:rgba(255,255,255,.1);color:#fff;}
+.nav-cta{background:var(--green)!important;color:#fff!important;font-weight:700!important;padding:8px 18px!important;}
+.nav-cta:hover{background:#27784a!important;}
+.nav-mod{background:rgba(255,255,255,.1)!important;font-size:12px!important;}
+.vig{background:linear-gradient(90deg,#1f6e40,var(--green));display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 20px;}
+.vig span{color:#fff;font-size:12.5px;font-weight:600;}
+.vig-pill{background:rgba(255,255,255,.2);color:#fff;font-size:11.5px;font-weight:800;padding:2px 12px;border-radius:20px;}
+.hero{background:linear-gradient(130deg,var(--navy-dark) 0%,var(--navy) 55%,#1e5a9c 100%);padding:80px 48px;display:flex;align-items:center;gap:56px;position:relative;overflow:hidden;min-height:440px;}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:480px;height:480px;border-radius:50%;background:rgba(46,139,87,.09);}
+.hero-wm{position:absolute;right:40px;top:50%;transform:translateY(-50%);opacity:.05;width:260px;}
+.hero-content{flex:1;position:relative;z-index:1;}
+.badge-live{display:inline-flex;align-items:center;gap:7px;background:rgba(46,139,87,.18);border:1px solid rgba(46,139,87,.35);color:#5de89b;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:22px;text-transform:uppercase;letter-spacing:.5px;}
+.badge-live::before{content:'';width:7px;height:7px;border-radius:50%;background:#5de89b;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:42px;color:#fff;line-height:1.15;margin-bottom:18px;}
+.hero h1 em{color:#5de89b;font-style:normal;}
+.hero p{color:rgba(255,255,255,.75);font-size:15.5px;line-height:1.7;margin-bottom:36px;max-width:480px;}
+.btn-hero{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;border:none;padding:16px 34px;border-radius:10px;font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;cursor:pointer;transition:background .2s,transform .15s;text-decoration:none;}
+.btn-hero:hover{background:#27784a;transform:translateY(-2px);}
+.hero-stats{display:flex;flex-direction:column;gap:10px;flex-shrink:0;position:relative;z-index:1;}
+.stat-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:22px 30px;text-align:center;}
+.stat-n{font-family:'Nunito',sans-serif;font-weight:900;font-size:30px;color:#5de89b;}
+.stat-l{font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.5px;margin-top:3px;}
+.features{background:#fff;padding:44px 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;border-bottom:1px solid var(--light);}
+.feat{text-align:center;padding:18px 10px;}
+.feat-icon{font-size:30px;margin-bottom:10px;}
+.feat h4{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--navy);margin-bottom:5px;}
+.feat p{font-size:12.5px;color:var(--gray);line-height:1.5;}
+.sec-hdr{text-align:center;margin-bottom:36px;}
+.sec-tag{font-size:12px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;}
+.sec-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:26px;color:var(--navy);}
+.services{background:var(--offwhite);padding:56px 48px;}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.srv-card{background:#fff;border-radius:14px;padding:28px 22px;border:1px solid var(--border);transition:transform .2s,box-shadow .2s;}
+.srv-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,61,110,.1);}
+.srv-ico{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;}
+.ico-b{background:rgba(27,61,110,.09);}.ico-g{background:rgba(46,139,87,.1);}.ico-t{background:rgba(27,100,110,.09);}
+.srv-card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:15.5px;color:var(--navy);margin-bottom:9px;line-height:1.3;}
+.srv-card p{font-size:13px;color:var(--gray);line-height:1.6;}
+.srv-tag{display:inline-block;margin-top:12px;background:rgba(46,139,87,.1);color:var(--green);font-size:11px;font-weight:700;padding:3px 11px;border-radius:20px;}
+.vig-chip{display:inline-flex;align-items:center;gap:5px;margin-top:7px;margin-left:6px;background:rgba(27,61,110,.07);color:var(--navy);font-size:11px;font-weight:700;padding:3px 11px;border-radius:20px;}
+.proceso{padding:56px 48px;background:#fff;}
+.steps{display:flex;align-items:flex-start;margin-top:40px;}
+.step{flex:1;text-align:center;padding:0 18px;position:relative;}
+.step::after{content:'';position:absolute;top:24px;right:-1px;width:50%;height:2px;background:linear-gradient(90deg,var(--green),rgba(46,139,87,.2));}
+.step:last-child::after{display:none;}
+.step-num{width:50px;height:50px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;margin:0 auto 16px;position:relative;z-index:1;}
+.step h4{font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;color:var(--navy);margin-bottom:7px;}
+.step p{font-size:12.5px;color:var(--gray);line-height:1.5;}
+.galeria{background:var(--offwhite);padding:56px 48px;}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.gal-item{background:#fff;border-radius:12px;border:2px dashed var(--border);aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:border-color .2s;}
+.gal-item:hover{border-color:var(--navy);}
+.gal-item span{font-size:32px;}.gal-item p{font-size:12px;color:var(--gray);text-align:center;padding:0 16px;}
+.gal-note{text-align:center;margin-top:16px;font-size:12px;color:var(--gray);font-style:italic;}
+.faq{background:#fff;padding:56px 48px;}
+.faq-list{max-width:720px;margin:0 auto;}
+.faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+.faq-q{width:100%;background:#fff;border:none;padding:16px 20px;text-align:left;font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .15s;}
+.faq-q:hover{background:var(--offwhite);}.faq-q.open{background:var(--navy);color:#fff;}
+.faq-q .arr{font-size:12px;transition:transform .2s;}.faq-q.open .arr{transform:rotate(180deg);}
+.faq-a{display:none;padding:14px 20px;font-size:13px;color:var(--gray);line-height:1.7;background:var(--offwhite);border-top:1px solid var(--light);}
+.faq-a.open{display:block;}
+.agenda-wrap{background:var(--offwhite);}
+.agenda-inner{display:grid;grid-template-columns:1fr 1fr;gap:36px;padding:48px;}
+.agenda-info h2{font-family:'Nunito',sans-serif;font-weight:900;font-size:26px;color:var(--navy);margin-bottom:12px;}
+.agenda-info p{color:var(--gray);font-size:14px;line-height:1.7;margin-bottom:26px;}
+.ci{display:flex;align-items:flex-start;gap:13px;margin-bottom:16px;}
+.ci-icon{width:38px;height:38px;background:rgba(27,61,110,.08);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.ci-text strong{display:block;font-size:13px;font-weight:700;color:var(--navy);}
+.ci-text span{font-size:12.5px;color:var(--gray);line-height:1.5;}
+.map-link{color:var(--navy);text-decoration:underline;font-size:12.5px;font-weight:700;cursor:pointer;}
+.map-link:hover{color:var(--green);}
+.form-card{background:#fff;border-radius:14px;padding:30px 26px;border:1px solid var(--border);}
+.form-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:19px;color:var(--navy);margin-bottom:22px;}
+.form-row{margin-bottom:15px;}
+.form-row label{display:block;font-size:11.5px;font-weight:700;color:var(--navy);margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px;}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:#fff;transition:border-color .2s;outline:none;}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--navy);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.como-box{background:var(--offwhite);border:1.5px solid var(--border);border-radius:8px;padding:15px;}
+.como-label{font-size:11.5px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:11px;}
+.como-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+.como-chk{display:flex;align-items:center;gap:8px;cursor:pointer;}
+.como-chk input[type="checkbox"]{width:16px;height:16px;accent-color:var(--navy);cursor:pointer;flex-shrink:0;}
+.como-chk span{font-size:13px;color:var(--text);}
+.como-otro{width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:13px;background:#fff;outline:none;}
+.como-otro:focus{border-color:var(--navy);}
+.src-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.src-btn{padding:9px 4px;border:1.5px solid var(--border);border-radius:8px;background:#fff;font-size:12px;font-weight:700;color:var(--gray);cursor:pointer;text-align:center;transition:all .15s;}
+.src-btn:hover{border-color:var(--navy);color:var(--navy);}
+.src-btn.selected{background:var(--navy);color:#fff;border-color:var(--navy);}
+.btn-submit{width:100%;background:var(--navy);color:#fff;border:none;padding:14px;border-radius:9px;font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;cursor:pointer;margin-top:10px;transition:background .2s;}
+.btn-submit:hover{background:var(--navy-dark);}
+.form-note{text-align:center;font-size:11.5px;color:var(--gray);margin-top:10px;}
+.success-msg{display:none;background:rgba(46,139,87,.1);border:1px solid rgba(46,139,87,.3);border-radius:8px;padding:14px;text-align:center;color:#1f6e40;font-weight:700;font-size:14px;margin-top:12px;}
+.mod-page{background:var(--offwhite);padding:32px;}
+.mod-hdr{background:var(--navy);border-radius:12px;padding:24px 28px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;}
+.mod-hdr h2{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;color:#fff;}
+.mod-hdr p{font-size:13px;color:rgba(255,255,255,.6);margin-top:4px;}
+.mod-badge{background:var(--green);color:#fff;font-size:11.5px;font-weight:800;padding:5px 14px;border-radius:20px;}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px;}
+.metric-card{background:#fff;border-radius:12px;padding:18px 16px;border:1px solid var(--border);}
+.metric-label{font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.metric-num{font-family:'Nunito',sans-serif;font-weight:900;font-size:30px;color:var(--navy);}
+.metric-sub{font-size:11px;color:var(--gray);margin-top:4px;}
+.redes-card{background:#fff;border-radius:12px;padding:22px 26px;border:1px solid var(--border);margin-bottom:20px;}
+.redes-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;color:var(--navy);margin-bottom:18px;}
+.red-row{display:flex;align-items:center;gap:12px;margin-bottom:13px;}
+.red-name{width:95px;font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px;}
+.red-bar-bg{flex:1;height:10px;background:var(--light);border-radius:20px;overflow:hidden;}
+.red-bar{height:100%;border-radius:20px;transition:width .6s;}
+.red-count{font-size:13px;font-weight:800;color:var(--navy);min-width:28px;text-align:right;}
+.red-pct{font-size:11px;color:var(--gray);min-width:36px;text-align:right;}
+.table-card{background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;}
+.table-hdr{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.table-hdr h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;color:var(--navy);}
+.tbl-search{padding:7px 12px;border:1px solid var(--border);border-radius:7px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;width:210px;}
+.tbl-search:focus{border-color:var(--navy);}
+table{width:100%;border-collapse:collapse;}
+thead th{padding:10px 16px;text-align:left;font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;background:var(--offwhite);border-bottom:1px solid var(--border);}
+tbody tr{border-bottom:.5px solid var(--border);}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:var(--offwhite);}
+tbody td{padding:12px 16px;font-size:13px;color:var(--text);}
+.badge-src{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;}
+.badge-tk{background:#fff0f5;color:#e91e63;}.badge-ig{background:#f3e8ff;color:#9c27b0;}
+.badge-fb{background:#e8f0fe;color:#1a73e8;}.badge-dir{background:#e8f5e9;color:#2e7d32;}
+.badge-otro{background:var(--offwhite);color:var(--gray);}
+.badge-como{background:rgba(27,61,110,.07);color:var(--navy);padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600;display:inline-block;margin:1px;}
+.no-data{text-align:center;padding:36px;color:var(--gray);font-size:14px;}
+.footer{background:var(--navy-dark);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;}
+.footer-brand{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:#fff;}
+.footer-brand small{display:block;font-weight:400;font-size:11px;color:rgba(255,255,255,.45);margin-top:3px;}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{color:rgba(255,255,255,.5);font-size:12px;text-decoration:none;cursor:pointer;}
+.footer-links a:hover{color:#5de89b;}
+.wa-float{position:fixed;bottom:24px;right:24px;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s;z-index:999;}
+.wa-float:hover{transform:scale(1.1);}
+</style>
+</head>
+<body>
+<div class="site">
+
+<!-- ═══ NAV LOGO SVG (reutilizable) ═══ -->
+<template id="logo-tpl">
+<svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="47" fill="none" stroke="#2E8B57" stroke-width="5"/>
+  <circle cx="50" cy="50" r="39" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="50" y1="18" x2="50" y2="64" stroke="#2E8B57" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M50 28 C37 23 34 38 50 40 C66 42 63 57 50 52" stroke="#2E8B57" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M50 28 C63 23 66 38 50 40 C34 42 37 57 50 52" stroke="#2E8B57" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M50 20 C41 15 27 19 22 27 C33 19 44 22 50 28" fill="#2E8B57"/>
+  <path d="M50 20 C59 15 73 19 78 27 C67 19 56 22 50 28" fill="#2E8B57"/>
+  <rect x="24" y="63" width="52" height="17" rx="5" fill="white" opacity=".88"/>
+  <rect x="29" y="55" width="42" height="13" rx="5" fill="white" opacity=".65"/>
+  <circle cx="34" cy="82" r="4.5" fill="#1B3D6E"/>
+  <circle cx="66" cy="82" r="4.5" fill="#1B3D6E"/>
+</svg>
+</template>
+
+<!-- ═══════ PÁGINA INICIO ═══════ -->
+<div class="page active" id="page-home">
+  <nav class="nav">
+    <div class="nav-left" id="logo-home"></div>
+    <div class="nav-links">
+      <a onclick="goTo('page-home')">Inicio</a>
+      <a onclick="scrollFaq()">FAQ</a>
+      <a onclick="goTo('page-agenda')">Contacto</a>
+      <a onclick="goTo('page-agenda')" class="nav-cta">Agendar cita</a>
+      <a onclick="goTo('page-mod')" class="nav-mod">⚙ Moderador</a>
+    </div>
+  </nav>
+  <div class="vig"><span>🗓️ Certificado con</span><span class="vig-pill">vigencia de 1 año</span><span>· válido para tránsito en Honduras</span></div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="badge-live">Atención rápida y profesional</div>
+      <h1>Tu certificado médico<br>para <em>licencia de conducir</em></h1>
+      <p>Evaluaciones profesionales para trámites de tránsito en San Pedro Sula. Primera vez o renovación — rápido, sin filas y con certificado válido por <strong style="color:#5de89b">1 año</strong>.</p>
+      <button class="btn-hero" onclick="goTo('page-agenda')">Agendar cita <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="stat-n">20 min</div><div class="stat-l">Duración consulta</div></div>
+      <div class="stat-card"><div class="stat-n">1 año</div><div class="stat-l">Vigencia certificado</div></div>
+      <div class="stat-card"><div class="stat-n">L – S</div><div class="stat-l">Lun a Sáb abiertos</div></div>
+    </div>
+    <svg class="hero-wm" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="100" y1="40" x2="100" y2="240" stroke="white" stroke-width="6"/><path d="M100 80 C60 65 55 110 100 120 C145 130 140 175 100 160" stroke="white" stroke-width="4" fill="none"/><path d="M100 80 C140 65 145 110 100 120 C55 130 60 175 100 160" stroke="white" stroke-width="4" fill="none"/><path d="M100 46 C75 34 35 38 20 55 C50 38 85 44 100 60" fill="white"/><path d="M100 46 C125 34 165 38 180 55 C150 38 115 44 100 60" fill="white"/></svg>
+  </section>
+
+  <div class="features">
+    <div class="feat"><div class="feat-icon">⚡</div><h4>Resultado el mismo día</h4><p>No esperes días. Tu certificado listo en minutos.</p></div>
+    <div class="feat"><div class="feat-icon">✅</div><h4>Avalado por tránsito</h4><p>Certificados reconocidos oficialmente para tus trámites.</p></div>
+    <div class="feat"><div class="feat-icon">📅</div><h4>Sin filas</h4><p>Agenda en línea o por WhatsApp y llega directo.</p></div>
+    <div class="feat"><div class="feat-icon">🩺</div><h4>Médico certificado</h4><p>Evaluación profesional en instalaciones modernas.</p></div>
+  </div>
+
+  <section class="services">
+    <div class="sec-hdr"><div class="sec-tag">Nuestros servicios</div><div class="sec-title">Todo lo que necesitas para tu trámite de tránsito</div></div>
+    <div class="srv-grid">
+      <div class="srv-card"><div class="srv-ico ico-b">🪪</div><h3>Certificado primera licencia</h3><p>Evaluación médica completa para obtener tu licencia por primera vez.</p><span class="srv-tag">Primera vez</span><span class="vig-chip">🗓️ Vigencia 1 año</span></div>
+      <div class="srv-card"><div class="srv-ico ico-g">🔄</div><h3>Renovación de licencia</h3><p>Proceso rápido para renovar tu certificado médico de conducir.</p><span class="srv-tag">Renovación</span><span class="vig-chip">🗓️ Vigencia 1 año</span></div>
+      <div class="srv-card"><div class="srv-ico ico-t">🩺</div><h3>Evaluación médica express</h3><p>Consulta completa en 20 minutos. Resultados el mismo día.</p><span class="srv-tag">Mismo día</span><span class="vig-chip">✅ Avalado tránsito</span></div>
+    </div>
+  </section>
+
+  <section class="proceso">
+    <div class="sec-hdr"><div class="sec-tag">El proceso</div><div class="sec-title">3 pasos simples para tu certificado</div></div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h4>Agenda tu cita</h4><p>Por WhatsApp o en línea. Sin filas, tú eliges el horario.</p></div>
+      <div class="step"><div class="step-num">2</div><h4>Ven a tu consulta</h4><p>Trae cédula vigente. Evaluación en 20 minutos.</p></div>
+      <div class="step"><div class="step-num">3</div><h4>Recibe tu certificado</h4><p>El mismo día. Válido 1 año para tránsito.</p></div>
+    </div>
+  </section>
+
+  <section class="galeria">
+    <div class="sec-hdr"><div class="sec-tag">Nuestras instalaciones</div><div class="sec-title">Conoce TuMedico DeConducir</div></div>
+    <div class="gal-grid">
+      <div class="gal-item"><span>📷</span><p>Foto del consultorio próximamente</p></div>
+      <div class="gal-item"><span>📷</span><p>Área de recepción próximamente</p></div>
+      <div class="gal-item"><span>📷</span><p>Sala de espera próximamente</p></div>
+      <div class="gal-item"><span>📷</span><p>Equipo médico próximamente</p></div>
+      <div class="gal-item"><span>📷</span><p>Zona de evaluación próximamente</p></div>
+      <div class="gal-item"><span>📷</span><p>Exterior de la clínica próximamente</p></div>
+    </div>
+    <p class="gal-note">📸 Las fotografías estarán disponibles próximamente</p>
+  </section>
+
+  <section class="faq" id="faq-section">
+    <div class="sec-hdr"><div class="sec-tag">Preguntas frecuentes</div><div class="sec-title">Todo lo que necesitas saber</div></div>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo dura la evaluación médica? <span class="arr">▼</span></button><div class="faq-a">La evaluación médica tiene una duración aproximada de 20 minutos. Nuestro proceso está diseñado para ser eficiente y respetar tu tiempo sin sacrificar la calidad de la atención.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo tiene de vigencia el certificado? <span class="arr">▼</span></button><div class="faq-a">El certificado médico tiene una vigencia de 1 año a partir de la fecha de emisión, válido para todos los trámites oficiales de tránsito en Honduras.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Qué documentos debo llevar? <span class="arr">▼</span></button><div class="faq-a">Solo necesitas presentar tu cédula de identidad vigente. Si estás renovando tu licencia, también puedes traer tu licencia anterior aunque no es obligatorio.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Necesito ir en ayunas? <span class="arr">▼</span></button><div class="faq-a">No es necesario ir en ayunas para la evaluación estándar. Si tienes condiciones como diabetes o hipertensión, te recomendamos mencionarlo al agendar.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿El certificado sirve para primera vez y renovación? <span class="arr">▼</span></button><div class="faq-a">Sí, emitimos certificados tanto para primera vez como para renovación. El proceso es el mismo y el resultado es válido para cualquiera de los trámites.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cómo puedo agendar mi cita? <span class="arr">▼</span></button><div class="faq-a">Puedes agendar completando el formulario en línea o escribiéndonos directamente por WhatsApp. Te contactaremos en breve para confirmar fecha y hora.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuál es la dirección de la clínica? <span class="arr">▼</span></button><div class="faq-a">Estamos ubicados en 22 Calle A, San Pedro Sula, Cortés, Honduras. Puedes hacer clic en la dirección dentro del apartado de contacto para abrir Google Maps.</div></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-brand">TuMedico DeConducir<small>22 Calle A, San Pedro Sula, Cortés · Honduras</small></div>
+    <div class="footer-links"><a onclick="goTo('page-home')">Inicio</a><a onclick="goTo('page-agenda')">Agendar cita</a><a onclick="scrollFaq()">FAQ</a></div>
+  </footer>
+</div>
+
+<!-- ═══════ PÁGINA AGENDAR ═══════ -->
+<div class="page" id="page-agenda">
+  <nav class="nav">
+    <div class="nav-left" id="logo-agenda"></div>
+    <div class="nav-links"><a onclick="goTo('page-home')">← Inicio</a><a onclick="goTo('page-mod')" class="nav-mod">⚙ Moderador</a></div>
+  </nav>
+  <div class="vig"><span>🗓️ Certificado con</span><span class="vig-pill">vigencia de 1 año</span><span>· válido para tránsito en Honduras</span></div>
+  <div class="agenda-wrap">
+    <div class="agenda-inner">
+      <div class="agenda-info">
+        <div class="sec-tag">Agenda tu cita</div>
+        <h2>¿Listo para tramitar tu licencia?</h2>
+        <p>Completa el formulario y te contactamos para confirmar. También puedes escribirnos por WhatsApp.</p>
+        <div class="ci"><div class="ci-icon">📍</div><div class="ci-text"><strong>Ubicación</strong><span>22 Calle A, San Pedro Sula, Cortés<br><a class="map-link" onclick="openMaps()">📌 Ver en Google Maps →</a></span></div></div>
+        <div class="ci"><div class="ci-icon">🕐</div><div class="ci-text"><strong>Horario de atención</strong><span>Lunes a Sábado · 7:00 AM – 5:00 PM</span></div></div>
+        <div class="ci"><div class="ci-icon">🗓️</div><div class="ci-text"><strong>Vigencia del certificado</strong><span>1 año · Válido para trámites de tránsito</span></div></div>
+        <div class="ci"><div class="ci-icon">📱</div><div class="ci-text"><strong>WhatsApp</strong><span><a style="color:var(--green);font-weight:700;text-decoration:none;" href="https://wa.me/50498800678" target="_blank">+504 9880-0678</a></span></div></div>
+      </div>
+      <div class="form-card">
+        <div class="form-title">Solicitud de cita</div>
+        <div class="form-row">
+          <label>¿Cómo nos encontraste?</label>
+          <div class="src-row">
+            <button class="src-btn" onclick="selectSource(this,'TikTok')">🎵 TikTok</button>
+            <button class="src-btn" onclick="selectSource(this,'Instagram')">📸 Instagram</button>
+            <button class="src-btn" onclick="selectSource(this,'Facebook')">👥 Facebook</button>
+            <button class="src-btn" onclick="selectSource(this,'Directo')">🔗 Directo</button>
+          </div>
+          <input type="hidden" id="f-source" value=""/>
+        </div>
+        <div class="form-row"><label>Nombre completo</label><input type="text" placeholder="Tu nombre y apellido" id="f-nombre"/></div>
+        <div class="form-grid">
+          <div class="form-row"><label>Teléfono</label><input type="tel" placeholder="+504 ..." id="f-tel"/></div>
+          <div class="form-row"><label>Fecha preferida</label><input type="date" id="f-fecha"/></div>
+        </div>
+        <div class="form-row"><label>Tipo de servicio</label>
+          <select id="f-servicio">
+            <option value="">Selecciona una opción</option>
+            <option>Certificado – Primera licencia</option>
+            <option>Certificado – Renovación</option>
+            <option>Evaluación médica general</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="como-box">
+            <span class="como-label">¿Padece alguna condición médica?</span>
+            <div class="como-opts">
+              <label class="como-chk"><input type="checkbox" value="Diabetes"/> <span>Diabetes</span></label>
+              <label class="como-chk"><input type="checkbox" value="Hipertensión"/> <span>Hipertensión</span></label>
+              <label class="como-chk"><input type="checkbox" value="Condición visual"/> <span>Condición visual</span></label>
+              <label class="como-chk"><input type="checkbox" value="Epilepsia"/> <span>Epilepsia</span></label>
+              <label class="como-chk"><input type="checkbox" value="Condición cardiaca"/> <span>Condición cardiaca</span></label>
+              <label class="como-chk"><input type="checkbox" value="Ninguna"/> <span>Ninguna</span></label>
+            </div>
+            <input class="como-otro" type="text" placeholder="Otra condición (especifica aquí)" id="f-como-otro"/>
+          </div>
+        </div>
+        <div class="form-row"><label>Mensaje (opcional)</label><textarea rows="3" placeholder="¿Alguna consulta adicional?" id="f-msg"></textarea></div>
+        <button class="btn-submit" onclick="enviarFormulario()">Solicitar mi cita →</button>
+        <div class="success-msg" id="success-msg">✅ ¡Solicitud enviada! Te contactaremos para confirmar tu cita.</div>
+        <p class="form-note">También puedes escribirnos directamente por WhatsApp</p>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-brand">TuMedico DeConducir<small>22 Calle A, San Pedro Sula, Cortés · Honduras</small></div>
+    <div class="footer-links"><a onclick="goTo('page-home')">Inicio</a><a onclick="openMaps()">Ver en Maps</a></div>
+  </footer>
+</div>
+
+<!-- ═══════ MODERADOR ═══════ -->
+<div class="page" id="page-mod">
+  <nav class="nav">
+    <div class="nav-left" id="logo-mod"></div>
+    <div class="nav-links"><a onclick="goTo('page-home')">← Volver al sitio</a></div>
+  </nav>
+  <div class="mod-page">
+    <div class="mod-hdr">
+      <div><h2>Panel de administración</h2><p>Registro de pacientes y métricas de alcance por red social</p></div>
+      <span class="mod-badge" id="mod-total-badge">0 solicitudes</span>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric-card"><div class="metric-label">📋 Total solicitudes</div><div class="metric-num" id="m-total">0</div><div class="metric-sub">Desde el inicio</div></div>
+      <div class="metric-card"><div class="metric-label">🎵 TikTok</div><div class="metric-num" id="m-tk">0</div><div class="metric-sub" id="m-tk-p">0%</div></div>
+      <div class="metric-card"><div class="metric-label">📸 Instagram</div><div class="metric-num" id="m-ig">0</div><div class="metric-sub" id="m-ig-p">0%</div></div>
+      <div class="metric-card"><div class="metric-label">👥 Facebook</div><div class="metric-num" id="m-fb">0</div><div class="metric-sub" id="m-fb-p">0%</div></div>
+    </div>
+    <div class="redes-card">
+      <div class="redes-title">Alcance por red social</div>
+      <div class="red-row"><span class="red-name">🎵 TikTok</span><div class="red-bar-bg"><div class="red-bar" id="bar-tk" style="width:0%;background:#e91e63;"></div></div><span class="red-count" id="bc-tk">0</span><span class="red-pct" id="bp-tk">0%</span></div>
+      <div class="red-row"><span class="red-name">📸 Instagram</span><div class="red-bar-bg"><div class="red-bar" id="bar-ig" style="width:0%;background:#9c27b0;"></div></div><span class="red-count" id="bc-ig">0</span><span class="red-pct" id="bp-ig">0%</span></div>
+      <div class="red-row"><span class="red-name">👥 Facebook</span><div class="red-bar-bg"><div class="red-bar" id="bar-fb" style="width:0%;background:#1a73e8;"></div></div><span class="red-count" id="bc-fb">0</span><span class="red-pct" id="bp-fb">0%</span></div>
+      <div class="red-row"><span class="red-name">🔗 Directo</span><div class="red-bar-bg"><div class="red-bar" id="bar-dir" style="width:0%;background:#2e7d32;"></div></div><span class="red-count" id="bc-dir">0</span><span class="red-pct" id="bp-dir">0%</span></div>
+    </div>
+    <div class="table-card">
+      <div class="table-hdr"><h3>Registro de pacientes</h3><input class="tbl-search" type="text" placeholder="Buscar paciente..." oninput="filtrarTabla(this.value)"/></div>
+      <div id="table-container">
+        <div class="no-data" id="no-data-msg">Aún no hay solicitudes registradas.<br>Las citas agendadas aparecerán aquí automáticamente.</div>
+        <table id="tabla-pacientes" style="display:none;">
+          <thead><tr><th>#</th><th>Nombre</th><th>Teléfono</th><th>Servicio</th><th>Condiciones</th><th>Fecha cita</th><th>Fuente</th><th>Registrado</th></tr></thead>
+          <tbody id="tabla-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-brand">TuMedico DeConducir · Panel Moderador<small>Solo para uso administrativo interno</small></div>
+    <div class="footer-links"><a onclick="goTo('page-home')">Volver al sitio</a></div>
+  </footer>
+</div>
+
+</div><!-- /site -->
+
+<div class="wa-float" title="WhatsApp" onclick="window.open('https://wa.me/50498800678','_blank')">
+  <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</div>
+
+<script>
+// ── Logo injection ──
+var LOGO_SVG = '<svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="47" fill="none" stroke="#2E8B57" stroke-width="5"/><circle cx="50" cy="50" r="39" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="50" y1="18" x2="50" y2="64" stroke="#2E8B57" stroke-width="3.5" stroke-linecap="round"/><path d="M50 28 C37 23 34 38 50 40 C66 42 63 57 50 52" stroke="#2E8B57" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M50 28 C63 23 66 38 50 40 C34 42 37 57 50 52" stroke="#2E8B57" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M50 20 C41 15 27 19 22 27 C33 19 44 22 50 28" fill="#2E8B57"/><path d="M50 20 C59 15 73 19 78 27 C67 19 56 22 50 28" fill="#2E8B57"/><rect x="24" y="63" width="52" height="17" rx="5" fill="white" opacity=".88"/><rect x="29" y="55" width="42" height="13" rx="5" fill="white" opacity=".65"/><circle cx="34" cy="82" r="4.5" fill="#1B3D6E"/><circle cx="66" cy="82" r="4.5" fill="#1B3D6E"/></svg>';
+var BRAND_MAIN = '<div class="nav-brand">TuMedico DeConducir<small>Certificados Médicos · Licencia de Conducir</small></div>';
+var BRAND_MOD = '<div class="nav-brand">Panel Moderador · TuMedico<small>Administración y métricas</small></div>';
+document.getElementById('logo-home').innerHTML = LOGO_SVG + BRAND_MAIN;
+document.getElementById('logo-agenda').innerHTML = LOGO_SVG + BRAND_MAIN;
+document.getElementById('logo-mod').innerHTML = LOGO_SVG + BRAND_MOD;
+
+// ── Nav ──
+var pacientes=[];
+function goTo(id){document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+function scrollFaq(){goTo('page-home');setTimeout(function(){document.getElementById('faq-section').scrollIntoView({behavior:'smooth'});},100);}
+function toggleFaq(btn){var open=btn.classList.contains('open');document.querySelectorAll('.faq-q').forEach(function(b){b.classList.remove('open');});document.querySelectorAll('.faq-a').forEach(function(a){a.classList.remove('open');});if(!open){btn.classList.add('open');btn.nextElementSibling.classList.add('open');}}
+function selectSource(btn,val){document.querySelectorAll('.src-btn').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');document.getElementById('f-source').value=val;}
+function openMaps(){window.open('https://www.google.com/maps/search/?api=1&query=22+Calle+A+San+Pedro+Sula+Cortes+Honduras','_blank');}
+function getComos(){var c=[];document.querySelectorAll('.como-chk input:checked').forEach(function(x){c.push(x.value);});var o=document.getElementById('f-como-otro').value.trim();if(o)c.push(o);return c.length?c:['Ninguna especificada'];}
+function enviarFormulario(){
+  var n=document.getElementById('f-nombre').value.trim();
+  var t=document.getElementById('f-tel').value.trim();
+  var s=document.getElementById('f-servicio').value;
+  var src=document.getElementById('f-source').value||'No especificado';
+  var f=document.getElementById('f-fecha').value;
+  if(!n||!t||!s){alert('Por favor completa nombre, teléfono y tipo de servicio.');return;}
+  var ahora=new Date();
+  var reg=ahora.toLocaleDateString('es-HN')+' '+ahora.toLocaleTimeString('es-HN',{hour:'2-digit',minute:'2-digit'});
+  pacientes.push({nombre:n,tel:t,servicio:s,comos:getComos(),fechaCita:f||'Por definir',source:src,fechaReg:reg});
+  actualizarMod();
+  document.getElementById('success-msg').style.display='block';
+  ['f-nombre','f-tel','f-fecha','f-msg','f-como-otro'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('f-servicio').value='';document.getElementById('f-source').value='';
+  document.querySelectorAll('.src-btn').forEach(function(b){b.classList.remove('selected');});
+  document.querySelectorAll('.como-chk input').forEach(function(c){c.checked=false;});
+  setTimeout(function(){document.getElementById('success-msg').style.display='none';},4000);
+}
+function actualizarMod(){
+  var total=pacientes.length;
+  var cnt={TikTok:0,Instagram:0,Facebook:0,Directo:0};
+  pacientes.forEach(function(p){if(cnt[p.source]!==undefined)cnt[p.source]++;else cnt['Directo']++;});
+  document.getElementById('m-total').textContent=total;
+  document.getElementById('mod-total-badge').textContent=total+(total===1?' solicitud':' solicitudes');
+  ['TikTok','Instagram','Facebook'].forEach(function(k,i){var ids=['m-tk','m-ig','m-fb'];var ps=['m-tk-p','m-ig-p','m-fb-p'];document.getElementById(ids[i]).textContent=cnt[k];document.getElementById(ps[i]).textContent=total?Math.round(cnt[k]/total*100)+'%':'0%';});
+  var keys=['TikTok','Instagram','Facebook','Directo'];var bars=['tk','ig','fb','dir'];
+  keys.forEach(function(k,i){var w=total?Math.round(cnt[k]/total*100):0;document.getElementById('bar-'+bars[i]).style.width=w+'%';document.getElementById('bc-'+bars[i]).textContent=cnt[k];document.getElementById('bp-'+bars[i]).textContent=total?Math.round(cnt[k]/total*100)+'%':'0%';});
+  renderTabla(pacientes);
+}
+function srcBadge(s){var m={TikTok:'badge-tk',Instagram:'badge-ig',Facebook:'badge-fb',Directo:'badge-dir'};return '<span class="badge-src '+(m[s]||'badge-otro')+'">'+s+'</span>';}
+function renderTabla(data){
+  if(!data.length){document.getElementById('no-data-msg').style.display='block';document.getElementById('tabla-pacientes').style.display='none';return;}
+  document.getElementById('no-data-msg').style.display='none';document.getElementById('tabla-pacientes').style.display='table';
+  var tb=document.getElementById('tabla-body');tb.innerHTML='';
+  data.forEach(function(p,i){var badges=p.comos.map(function(c){return '<span class="badge-como">'+c+'</span>';}).join(' ');var tr=document.createElement('tr');tr.innerHTML='<td><strong>'+(i+1)+'</strong></td><td><strong>'+p.nombre+'</strong></td><td>'+p.tel+'</td><td style="font-size:12px;">'+p.servicio+'</td><td>'+badges+'</td><td>'+p.fechaCita+'</td><td>'+srcBadge(p.source)+'</td><td style="font-size:11px;color:var(--gray);">'+p.fechaReg+'</td>';tb.appendChild(tr);});
+}
+function filtrarTabla(q){renderTabla(pacientes.filter(function(p){return p.nombre.toLowerCase().includes(q.toLowerCase())||p.tel.includes(q)||p.servicio.toLowerCase().includes(q.toLowerCase());}));}
+</script>
+</body>
+</html>
