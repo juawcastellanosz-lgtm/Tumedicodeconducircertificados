@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8"/>
@@ -384,7 +385,7 @@ function selectSource(btn,val){document.querySelectorAll('.src-btn').forEach(fun
 function openMaps(){window.open('https://www.google.com/maps/search/?api=1&query=22+Calle+A+San+Pedro+Sula+Cortes+Honduras','_blank');}
 function getComos(){var c=[];document.querySelectorAll('.como-chk input:checked').forEach(function(x){c.push(x.value);});var o=document.getElementById('f-como-otro').value.trim();if(o)c.push(o);return c.length?c:['Ninguna especificada'];}
 var GMAIL_DESTINO='Juaw_castellanosz@unicah.edu';
-var GOOGLE_SHEET_URL='PEGA_AQUI_TU_URL_DE_APPS_SCRIPT';
+var GOOGLE_SHEET_URL='https://script.google.com/macros/s/AKfycbx-NsxY1uxZGBGH21d8vJvmbstFZmvxGO5HFxZd1_q-KW30-L3O_r2NK82qDQXlSv4k8w/exec';
 function enviarFormulario(){
   var n=document.getElementById('f-nombre').value.trim();
   var t=document.getElementById('f-tel').value.trim();
@@ -426,10 +427,9 @@ function enviarFormulario(){
   fetch('https://formsubmit.co/'+GMAIL_DESTINO,{method:'POST',body:formData})
   .then(function(){correoOk=true;intentarFinalizar();})
   .catch(function(){correoOk=true;intentarFinalizar();});
-  if(GOOGLE_SHEET_URL!=='PEGA_AQUI_TU_URL_DE_APPS_SCRIPT'){
-    fetch(GOOGLE_SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,telefono:t,servicio:s,fecha:f||'Por definir',condiciones:comos.join(', '),fuente:src,mensaje:msg,registrado:reg})})
-    .then(function(){sheetOk=true;}).catch(function(){sheetOk=true;});
-  }else{sheetOk=true;intentarFinalizar();}
+  fetch(GOOGLE_SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,telefono:t,servicio:s,fecha:f||'Por definir',condiciones:comos.join(', '),fuente:src,mensaje:msg,registrado:reg})})
+  .then(function(){sheetOk=true;intentarFinalizar();})
+  .catch(function(){sheetOk=true;intentarFinalizar();});
 }
 function actualizarMod(){
   var total=pacientes.length;
