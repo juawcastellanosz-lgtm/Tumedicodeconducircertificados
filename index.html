@@ -411,9 +411,7 @@ function enviarFormulario(){
   formData.append('Como_nos_encontro',src);
   formData.append('Mensaje',msg||'Sin mensaje');
   formData.append('Registrado_en',reg);
-  var correoOk=false;var sheetOk=false;
-  function intentarFinalizar(){
-    if(!correoOk&&!sheetOk)return;
+  function limpiarFormulario(){
     btn.textContent='Solicitar mi cita →';btn.disabled=false;
     pacientes.push({nombre:n,tel:t,servicio:s,comos:comos,fechaCita:f||'Por definir',source:src,fechaReg:reg});
     actualizarMod();
@@ -424,12 +422,14 @@ function enviarFormulario(){
     document.querySelectorAll('.como-chk input').forEach(function(c){c.checked=false;});
     setTimeout(function(){document.getElementById('success-msg').style.display='none';},5000);
   }
+  // Enviar correo
   fetch('https://formsubmit.co/'+GMAIL_DESTINO,{method:'POST',body:formData})
-  .then(function(){correoOk=true;intentarFinalizar();})
-  .catch(function(){correoOk=true;intentarFinalizar();});
-  fetch(GOOGLE_SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,telefono:t,servicio:s,fecha:f||'Por definir',condiciones:comos.join(', '),fuente:src,mensaje:msg,registrado:reg})})
-  .then(function(){sheetOk=true;intentarFinalizar();})
-  .catch(function(){sheetOk=true;intentarFinalizar();});
+  .then(function(){limpiarFormulario();})
+  .catch(function(){limpiarFormulario();});
+  // Enviar a Google Sheets — se manda independiente del correo
+  var payload=JSON.stringify({nombre:n,telefono:t,servicio:s,fecha:f||'Por definir',condiciones:comos.join(', '),fuente:src,mensaje:msg,registrado:reg});
+  fetch(GOOGLE_SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:payload})
+  .catch(function(err){console.error('Sheet error:',err);});
 }
 function actualizarMod(){
   var total=pacientes.length;
